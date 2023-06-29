@@ -23,5 +23,8 @@
  - [TTS(coqui-ai)](https://github.com/coqui-ai/TTS)
 
 ### HD
+ - [Raspberry Pi](https://www.raspberrypi.com)
+
+### IO
 
 &emsp;
