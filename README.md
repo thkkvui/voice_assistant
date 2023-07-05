@@ -8,10 +8,8 @@
 
 ## **プロトタイプ一覧**
 
-　ASR, NLU, TTSは主にOSSの学習済みモデルを使用しています。以下はJupyter Notebookのサンプルコードになります。
+　ASR, NLU, TTSは主にOSSの学習済みモデルを使用しています。以下のnbはプロトタイプのサンプルコードになります。
 
 1. whisper_xlm_voicevox.ipynb
 2. whisper_xlm_TTS.ipynb
 3. 
-
-&emsp;
