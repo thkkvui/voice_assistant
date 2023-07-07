@@ -8,7 +8,7 @@
 
 ## **プロトタイプ一覧**
 
-　ASR, NLU, TTSは主にOSSの学習済みモデルを使用しています。以下のipynbはプロトタイプのサンプルコードになります。
+　ASR, NLU, TTSはOSSの学習済みモデルを使用しています。以下のipynbはプロトタイプのサンプルコードになります。
 
-1. whisper_xlm_TTS.ipynb
+1. [whisper_roberta(JaQuAD)_TTS.ipynb]()
 2. 

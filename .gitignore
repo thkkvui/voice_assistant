@@ -1,3 +1,6 @@
+.DS_Store
 .ipynb_checkpoints
-whisper_roberta(JaQuAD)_TTS.ipynb
 .python-version
+output
+output.wav
+record.wav
