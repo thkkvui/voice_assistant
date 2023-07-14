@@ -11,4 +11,5 @@
 　ASR, NLU, TTSはOSSの学習済みモデルを使用しています。以下のipynbはプロトタイプのサンプルコードになります。
 
 1. [whisper_roberta(JaQuAD)_TTS.ipynb](https://github.com/thkkvui/voice_assistant/blob/main/whisper_roberta(JaQuAD)_TTS.ipynb)
-2. 
+2. whisper-gpt2(wikipedia)_TTS.ipynb
+3. []
