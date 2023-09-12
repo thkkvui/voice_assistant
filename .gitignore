@@ -4,3 +4,5 @@
 output
 output.wav
 record.wav
+requirement.txt
+whisper_roberta(JaQuAD)_TTS.py
