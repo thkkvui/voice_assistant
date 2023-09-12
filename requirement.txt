@@ -1,0 +1,10 @@
+openai-whisper
+torch
+transformers
+datasets
+pyaudio
+mecab-python3
+alkana
+unidic-lite
+TTS==0.16.0
+sounddevice

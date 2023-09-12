@@ -4,5 +4,3 @@
 output
 output.wav
 record.wav
-requirement.txt
-src/ASR_NLU_TTS/python/whisper_roberta(JaQuAD)_TTS.py
