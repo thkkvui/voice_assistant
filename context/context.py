@@ -28,7 +28,7 @@ def s3GetData():
     s3 = session.client("s3")
 
     try:
-        res = s3.get_object(Bucket=bucket_name, Key=datetime(year, month, day, 12).strftime("%Y-%m-%d-%H"))
+        res = s3.get_object(Bucket=bucket_name, Key=datetime(year, month, day, hour).strftime("%Y-%m-%d-%H"))
 
         data = res['Body'].read().decode('unicode-escape')
         data = json.loads(data)
@@ -45,18 +45,19 @@ def getContext(data):
     
     market = f"ドル円は{data['market']['USD/JPY']}, ビットコインは{data['market']['BTC/USD']}です。"
     
-    n = random.sample(list(range(len(data['news']))), 3)
-    news = f"最新のニュースは{data['news'][n[0]]}, {data['news'][n[1]]}, {data['news'][n[2]]}です。"
+    n = random.sample(list(range(len(data['news']))), 1)
+    news = f"最新のニュースは{data['news'][n[0]]}です。"
     
     events = data["calendar"]
     event = ""
     if events[0]["event"] == "予定がありません":
         calendar = "今日は予定がありません"
     else:
-        for e in range(len(events)):
-            event += f"{e['start']}から{e['end']}まで、{e['event']}、"
+        for e in events:
+            start = datetime.fromisoformat(e["start"])
+            end = datetime.fromisoformat(e["end"])
+            event += f"{start.hour}:{start.minute}から{end.hour}:{end.minute}まで{e['event']}"
         calendar = f"今日は{event}が予定されています。"
-    
     context = weather + market + news + calendar
     
     return context
@@ -65,6 +66,8 @@ def getContext(data):
 def main():
     data = s3GetData()
     context = getContext(data)
+
+    return context
     
     
 if __name__ == "__main__":
