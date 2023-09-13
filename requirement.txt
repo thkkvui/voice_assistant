@@ -8,3 +8,5 @@ alkana
 unidic-lite
 TTS==0.16.0
 sounddevice
+boto3
+google-api-python-client
