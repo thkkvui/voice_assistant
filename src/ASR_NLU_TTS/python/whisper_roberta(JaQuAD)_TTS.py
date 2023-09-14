@@ -17,7 +17,7 @@ context = '''
 
 # Record
 record_filepath = "record.wav"
-rate = 44100
+sample_rate = 44100
 
 # ASR
 asr_model = whisper.load_model("base")
@@ -37,7 +37,7 @@ tts = TTS(tts_model)
 def record():
     record_time = 8
     FORMAT = pyaudio.paInt16        
-    rate = rate
+    rate = sample_rate
     chunk = 2**10
     audio = pyaudio.PyAudio()
     stream = audio.open(format=FORMAT,
@@ -108,7 +108,7 @@ def inference(asr_text):
 
 def speech(answer_text):
     tts.tts_to_file(answer_text, file_path=tts_filepath, progress_bar=False, gpu=False)
-    y, sr = librosa.load(tts_filepath, sr=rate)
+    y, sr = librosa.load(tts_filepath, sr=sample_rate)
     sd.play(y, sr)
     sd.wait()
     return
