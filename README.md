@@ -15,7 +15,7 @@
  - [whisper_roberta(JaQuAD)_TTS.py](https://github.com/thkkvui/voice_assistant/blob/main/src/ASR_NLU_TTS/python/whisper_roberta(JaQuAD)_TTS.py)
 2. **[Classification]**
  - [Text Classification]
-  - [whisper_roberta(massive)_TTS.ipynb]()
+  -- [whisper_roberta(massive)_TTS.ipynb]()
   - [whisper_roberta(massive)_TTS.py]()
  - [Zero-Shot Classification]
   - [whisper_mDeBERTa(nli-jnli)_TTS.ipynb]()
