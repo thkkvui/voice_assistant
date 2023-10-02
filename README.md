@@ -8,12 +8,20 @@
 
 ## **サンプルコード**
 
-　実装と動作テストに使用したコードの抜粋です。ASR, NLU, TTSはOSSの学習済みモデルを使用しています。
+　実装と動作テストに使用したコードの抜粋です。ASR, TTSはOSSの学習済みモデルを使用しています。
 
-1. - [whisper_roberta(JaQuAD)_TTS.ipynb](https://github.com/thkkvui/voice_assistant/blob/main/src/ASR_NLU_TTS/nb/whisper_roberta(JaQuAD)_TTS.ipynb)
-   - [whisper_roberta(JaQuAD)_TTS.py](https://github.com/thkkvui/voice_assistant/blob/main/src/ASR_NLU_TTS/python/whisper_roberta(JaQuAD)_TTS.py)
-2. whisper-gpt2(wikipedia)_TTS.ipynb
-3. []
+1. **[Question Answering]** 
+ - [whisper_roberta(JaQuAD)_TTS.ipynb](https://github.com/thkkvui/voice_assistant/blob/main/src/ASR_NLU_TTS/nb/whisper_roberta(JaQuAD)_TTS.ipynb)
+ - [whisper_roberta(JaQuAD)_TTS.py](https://github.com/thkkvui/voice_assistant/blob/main/src/ASR_NLU_TTS/python/whisper_roberta(JaQuAD)_TTS.py)
+2. **[Text Classification]**
+ - [whisper_roberta(massive)_TTS.ipynb]()
+ - [whisper_roberta(massive)_TTS.py]()
+---
+  **[Zero-Shot Classification]**
+ - [whisper_mDeBERTa(nli-jnli)_TTS.ipynb]()
+ - [whisper_mDeBERTa(nli-jnli)_TTS.py]()
+3. **[LLM]**
+ - [whisper-gpt2(wikipedia)_TTS.ipynb]()
 
 &emsp;
 
