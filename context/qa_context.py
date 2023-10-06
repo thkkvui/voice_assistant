@@ -28,7 +28,7 @@ def s3GetData():
     s3 = session.client("s3")
 
     try:
-        res = s3.get_object(Bucket=bucket_name, Key=datetime(year, month, day, hour).strftime("%Y-%m-%d-%H"))
+        res = s3.get_object(Bucket=bucket_name, Key=datetime(year, month, day, hour).strftime("%Y-%m-%d-%H")) # S3オブジェクト名に合わせてyear, month, day, hourを入力
 
         data = res['Body'].read().decode('unicode-escape')
         data = json.loads(data)
@@ -56,7 +56,7 @@ def getContext(data):
         for e in events:
             start = datetime.fromisoformat(e["start"])
             end = datetime.fromisoformat(e["end"])
-            event += f"{start.hour}:{start.minute}から{end.hour}:{end.minute}まで{e['event']}"
+            event += f"{start.hour}時{start.minute}分から{end.hour}時{end.minute}分まで{e['event']}、"
         calendar = f"今日は{event}が予定されています。"
     context = weather + market + news + calendar
     
@@ -67,8 +67,6 @@ def main():
     data = s3GetData()
     context = getContext(data)
 
-    return context
-    
     
 if __name__ == "__main__":
     main()

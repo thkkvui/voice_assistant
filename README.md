@@ -18,7 +18,7 @@
  - [whisper_roberta(JaQuAD)_TTS.py](https://github.com/thkkvui/voice_assistant/blob/main/src/ASR_NLU_TTS/python/whisper_roberta(JaQuAD)_TTS.py)
 
 ### 2. **Classification**
-　分類タスク用の自然言語モデルを使用したコードです。
+　分類タスク用の自然言語モデル（Text Classification、Zero-Shot Classification）を使用したコードです。
 
 #### [Text Classification]
  - [whisper_roberta(massive)_TTS.ipynb](https://github.com/thkkvui/voice_assistant/blob/main/src/ASR_NLU_TTS/nb/whisper_roberta(massive)_TTS.ipynb)
@@ -42,6 +42,6 @@
  - [音声アシスタントを作る 〜試作品を仕上げる（失敗）〜](https://thkkvui.blog/2023/09/14/post29/)
 
 ### 2. Classification
- - [音声アシスタントを作る 〜試作品を仕上げる〜]()
+ - [音声アシスタントを作る 〜試作品を仕上げる〜](https://thkkvui.blog/2023/10/06/post37/)
 
 ### 3. LLM 

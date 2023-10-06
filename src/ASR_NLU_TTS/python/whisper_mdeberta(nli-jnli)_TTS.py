@@ -11,11 +11,11 @@ from TTS.api import TTS
 import librosa
 import sounddevice as sd
 
-labels = ["天気", "ニュース", "予定", "金融"]
+labels = ["天気", "ニュース", "予定", "マーケット"]
 
 sample_outputs = {"天気":"今日は晴れ、予想最高気温は21℃です。",
            "ニュース":"オリンピック陸上100メートル決勝は雨天順延となりました。",
-           "金融":"今日のドル円は150円です。",
+           "マーケット":"今日のドル円は150円です。",
            "予定":"12時から会議、17時から東京で会食、が予定されています。"
 }
 
@@ -32,6 +32,7 @@ model_name = "thkkvui/mDeBERTa-v3-base-finetuned-nli-jnli"
 # TTS
 tts_filepath = "output.wav"
 tts_model = "tts_models/ja/kokoro/tacotron2-DDC"
+# tts_model_en = "tts_models/en/ljspeech/tacotron2-DDC"
 tts = TTS(tts_model)
 
 
