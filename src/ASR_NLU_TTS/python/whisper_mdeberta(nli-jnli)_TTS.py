@@ -1,6 +1,6 @@
 import torch
 import whisper
-from transformers import pipeline
+from transformers import pipeline, AutoTokenizer
 import pyaudio
 import wave
 import re
@@ -11,8 +11,10 @@ from TTS.api import TTS
 import librosa
 import sounddevice as sd
 
-labels = ["天気", "ニュース", "予定", "マーケット"]
+import asyncio
+api_interval = 1800
 
+intent_labels = ["天気", "ニュース", "予定", "マーケット"]
 sample_outputs = {"天気":"今日は晴れ、予想最高気温は21℃です。",
            "ニュース":"オリンピック陸上100メートル決勝は雨天順延となりました。",
            "マーケット":"今日のドル円は150円です。",
@@ -95,12 +97,15 @@ def data_preprocessing():
     print(asr_text)
     return asr_text
 
-def inference(asr_text):
+def intent_inference(asr_text):
     model_name = "thkkvui/mDeBERTa-v3-base-finetuned-nli-jnli"
     classifier = pipeline("zero-shot-classification", model=model_name)
-    output = classifier(asr_text, labels, multi_label=False)
-    answer_text = sample_outputs[output["labels"][0]]
-    return answer_text
+    output = classifier(asr_text, intent_labels, multi_label=False)
+
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    ids = tokenizer.encode(asr_text)
+    tokens = tokenizer.convert_ids_to_tokens(ids, skip_special_tokens=True)
+    return tokens, output["labels"][0]
 
 def speech(answer_text):
     tts.tts_to_file(answer_text, file_path=tts_filepath, progress_bar=False, gpu=False)
@@ -109,13 +114,53 @@ def speech(answer_text):
     sd.wait()
     return
 
-def main():
+async def get_queue(queue):
+    print(0)
+    while True:
+        speechText = await queue.get()
+        if speechText is None:
+            break
+        else:
+            speech(speechText)
+
+async def actions(tokens, intent):
+    if "もし" in tokens:
+        if intent=="天気":
+            data_classified = ner_inference(tokens)
+            term_list = get_terms(data_classified)
+            scheduler.add_job(check_weather_conditions, "interval", minutes=api_interval/60)  # intervalを設定
+            scheduler.start()
+            await WeatherForecast2(term_list[0], term_list[1], term_list[2], term_list[3])
+            await get_queue(speech_queue)
+        elif intent=="ニュース":
+            pass
+        elif intent=="予定":
+            pass
+        elif intent=="マーケット":
+            pass
+    else:
+        if intent=="天気":
+            speech(sample_outputs[intent])
+        elif intent=="ニュース":
+            speech(sample_outputs[intent])
+        elif intent=="予定":
+            speech(sample_outputs[intent])
+        elif intent=="マーケット":
+            speech(sample_outputs[intent])
+    return
+
+
+async def main():
+    # asr_sample1 = "今日の天気"
+    # asr_sample2 = "もし今日11時の東京の天気が晴れになったら通知して"
     record()
     asr_text = data_preprocessing()
-    answer_text = inference(asr_text)
-    speech(answer_text)
+    tokens, intent = intent_inference(asr_text)
+    await actions(tokens, intent)
+    loop.stop()
 
 
 if __name__ == "__main__":
-    main()
+    loop.run_until_complete(main())
+    loop.run_forever()
     

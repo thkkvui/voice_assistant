@@ -8,5 +8,6 @@ alkana
 unidic-lite
 TTS
 sounddevice
+APScheduler
 boto3
 google-api-python-client
