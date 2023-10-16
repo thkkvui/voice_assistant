@@ -12,6 +12,7 @@ import librosa
 import sounddevice as sd
 
 import asyncio
+loop = asyncio.get_event_loop()
 api_interval = 1800
 
 intent_labels = ["天気", "ニュース", "予定", "マーケット"]
@@ -115,7 +116,6 @@ def speech(answer_text):
     return
 
 async def get_queue(queue):
-    print(0)
     while True:
         speechText = await queue.get()
         if speechText is None:
